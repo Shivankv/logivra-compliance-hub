@@ -25,6 +25,7 @@ const groups = [
       { label: "Book a demo", href: "#demo" },
       { label: "Contact sales", href: "#demo" },
       { label: "FAQ", href: "#faq" },
+      { label: "Team sign in", href: "/auth" },
     ],
   },
 ];
