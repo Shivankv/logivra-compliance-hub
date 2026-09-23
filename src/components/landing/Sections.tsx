@@ -23,8 +23,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useState } from "react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { supabase } from "@/integrations/supabase/client";
 import permit from "@/assets/permit.jpg";
 import facility from "@/assets/facility.jpg";
 
@@ -391,6 +394,33 @@ export function Faq() {
 }
 
 export function FinalCta() {
+  const [email, setEmail] = useState("");
+  const [company, setCompany] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [done, setDone] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (busy) return;
+    setBusy(true);
+    try {
+      const { error } = await supabase.from("demo_requests").insert({
+        email: email.trim(),
+        company: company.trim() || null,
+        source: "landing_page",
+      });
+      if (error) throw error;
+      setDone(true);
+      setEmail("");
+      setCompany("");
+      toast.success("Request received. Our team will reach out within one business day.");
+    } catch {
+      toast.error("We couldn't send that. Please try again in a moment.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
   return (
     <section id="demo" className="bg-primary-deep">
       <div className="mx-auto max-w-4xl px-5 py-20 text-center sm:px-8">
@@ -402,29 +432,61 @@ export function FinalCta() {
           SysComp pulls out of it.
         </p>
 
-        <form
-          className="mx-auto mt-8 flex max-w-lg flex-col gap-3 sm:flex-row"
-          onSubmit={(e) => e.preventDefault()}
-        >
-          <label htmlFor="work-email" className="sr-only">
-            Work email
-          </label>
-          <Input
-            id="work-email"
-            type="email"
-            required
-            placeholder="you@company.com"
-            className="h-12 border-transparent bg-background text-base"
-          />
-          <Button
-            type="submit"
-            size="lg"
-            className="h-12 bg-background px-6 text-base text-primary hover:bg-background/90"
+        {done ? (
+          <div className="mx-auto mt-8 max-w-lg rounded-xl bg-background/10 p-6">
+            <p className="text-base font-medium text-primary-foreground">
+              Thanks — your request is in.
+            </p>
+            <p className="mt-2 text-sm text-primary-foreground/80">
+              Someone from our team will email you within one business day.
+            </p>
+            <button
+              type="button"
+              onClick={() => setDone(false)}
+              className="mt-4 text-xs text-primary-foreground/70 underline"
+            >
+              Send another request
+            </button>
+          </div>
+        ) : (
+          <form
+            className="mx-auto mt-8 flex max-w-xl flex-col gap-3 sm:flex-row"
+            onSubmit={handleSubmit}
           >
-            Book a demo
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
-        </form>
+            <label htmlFor="work-email" className="sr-only">
+              Work email
+            </label>
+            <Input
+              id="work-email"
+              type="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="you@company.com"
+              className="h-12 border-transparent bg-background text-base"
+            />
+            <label htmlFor="company" className="sr-only">
+              Company or facility
+            </label>
+            <Input
+              id="company"
+              type="text"
+              value={company}
+              onChange={(e) => setCompany(e.target.value)}
+              placeholder="Company or facility"
+              className="h-12 border-transparent bg-background text-base"
+            />
+            <Button
+              type="submit"
+              size="lg"
+              disabled={busy}
+              className="h-12 shrink-0 bg-background px-6 text-base text-primary hover:bg-background/90"
+            >
+              {busy ? "Sending…" : "Book a demo"}
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </form>
+        )}
         <p className="mt-4 text-xs text-primary-foreground/70">
           No commitment. We will answer within one business day.
         </p>
