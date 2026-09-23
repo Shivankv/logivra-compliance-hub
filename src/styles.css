@@ -142,3 +142,40 @@
     color: var(--color-foreground);
   }
 }
+
+/* Logivra brand tokens */
+:root {
+  --primary: oklch(0.42 0.082 162);
+  --primary-foreground: oklch(0.985 0.005 160);
+  --primary-soft: oklch(0.95 0.028 162);
+  --primary-deep: oklch(0.29 0.06 163);
+  --accent: oklch(0.96 0.025 162);
+  --accent-foreground: oklch(0.32 0.065 163);
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.21 0.02 160);
+  --muted: oklch(0.975 0.006 160);
+  --muted-foreground: oklch(0.52 0.015 160);
+  --border: oklch(0.905 0.008 160);
+  --input: oklch(0.905 0.008 160);
+  --ring: oklch(0.42 0.082 162);
+  --surface: oklch(0.985 0.006 160);
+  --radius: 0.75rem;
+}
+
+@theme inline {
+  --color-primary-soft: var(--primary-soft);
+  --color-primary-deep: var(--primary-deep);
+  --color-surface: var(--surface);
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
