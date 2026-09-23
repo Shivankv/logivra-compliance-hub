@@ -12,9 +12,9 @@ import {
 } from "@/components/landing/Sections";
 import { Footer } from "@/components/landing/Footer";
 
-const title = "Logivra — Automated environmental and EHS compliance";
+const title = "SysComp — Automated environmental and EHS compliance";
 const description =
-  "Logivra reads your permits, regulations, and reports and turns them into trackable obligations with owners, deadlines, and audit-ready evidence.";
+  "SysComp reads your permits, regulations, and reports and turns them into trackable obligations with owners, deadlines, and audit-ready evidence.";
 
 export const Route = createFileRoute("/")({
   head: () => ({

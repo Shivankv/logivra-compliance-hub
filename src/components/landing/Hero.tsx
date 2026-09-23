@@ -21,7 +21,7 @@ export function Hero() {
               Turn permits into a compliance plan you can track.
             </h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              Logivra reads your permits, regulations, and reports, then turns them into
+              SysComp reads your permits, regulations, and reports, then turns them into
               specific obligations with owners, due dates, and evidence. Less time in
               spreadsheets. No surprises before an audit.
             </p>
@@ -56,7 +56,7 @@ export function Hero() {
           <div className="rounded-2xl border border-border bg-background p-2 shadow-sm">
             <img
               src={dashboard}
-              alt="Logivra dashboard listing permit obligations with due dates and status"
+              alt="SysComp dashboard listing permit obligations with due dates and status"
               width={1600}
               height={1104}
               className="w-full rounded-xl border border-border"

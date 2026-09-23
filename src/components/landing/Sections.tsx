@@ -106,7 +106,7 @@ export function HowItWorks() {
       icon: ScanLine,
       step: "01",
       title: "Upload your documents",
-      body: "Drop in permits, consent orders, regulations, and past reports. Logivra handles scanned pages and long appendices.",
+      body: "Drop in permits, consent orders, regulations, and past reports. SysComp handles scanned pages and long appendices.",
     },
     {
       icon: ClipboardList,
@@ -272,7 +272,7 @@ export function WhoItsFor() {
               center={false}
               eyebrow="Who it's for"
               title="For the teams that answer to the regulator"
-              description="Logivra fits sites with real permits, real deadlines, and small teams holding it all together."
+              description="SysComp fits sites with real permits, real deadlines, and small teams holding it all together."
             />
             <ul className="mt-8 grid gap-3 sm:grid-cols-2">
               {roles.map((r) => (
@@ -317,7 +317,7 @@ export function Trust() {
         <SectionHeading
           eyebrow="Security"
           title="Built for records you cannot afford to lose"
-          description="Compliance data is sensitive. Logivra treats it that way."
+          description="Compliance data is sensitive. SysComp treats it that way."
         />
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           {items.map((i) => (
@@ -340,7 +340,7 @@ export function Trust() {
 export function Faq() {
   const faqs = [
     {
-      q: "What documents can Logivra read?",
+      q: "What documents can SysComp read?",
       a: "Air, water, and waste permits, consent orders, regulatory text, monitoring plans, and previous compliance reports. Scanned and digital files both work.",
     },
     {
@@ -357,11 +357,11 @@ export function Faq() {
     },
     {
       q: "Does it replace our existing EHS system?",
-      a: "It can, but it does not have to. Many teams use Logivra for permits and obligations and keep their other systems for incidents and training.",
+      a: "It can, but it does not have to. Many teams use SysComp for permits and obligations and keep their other systems for incidents and training.",
     },
     {
       q: "What happens when a permit is renewed?",
-      a: "Upload the new version and Logivra flags what changed, so you only review the differences instead of rereading the whole document.",
+      a: "Upload the new version and SysComp flags what changed, so you only review the differences instead of rereading the whole document.",
     },
   ];
 
@@ -399,7 +399,7 @@ export function FinalCta() {
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-primary-foreground/80 sm:text-lg">
           Book a 30 minute demo. Bring one permit and we will show you the obligations
-          Logivra pulls out of it.
+          SysComp pulls out of it.
         </p>
 
         <form
