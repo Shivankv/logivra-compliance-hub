@@ -40,7 +40,7 @@ export function Footer() {
                 <Leaf className="h-5 w-5" />
               </span>
               <span className="font-display text-lg font-semibold text-foreground">
-                Logivra
+                SysComp
               </span>
             </div>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
@@ -70,7 +70,7 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col gap-3 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Logivra. All rights reserved.
+            © {new Date().getFullYear()} SysComp. All rights reserved.
           </p>
           <div className="flex gap-6">
             <a href="#demo" className="text-xs text-muted-foreground hover:text-foreground">

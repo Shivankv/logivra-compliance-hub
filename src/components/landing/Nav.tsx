@@ -21,7 +21,7 @@ export function Nav() {
             <Leaf className="h-5 w-5" />
           </span>
           <span className="font-display text-lg font-semibold tracking-tight text-foreground">
-            Logivra
+            SysComp
           </span>
         </a>
 
