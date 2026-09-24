@@ -39,7 +39,7 @@ export function Nav() {
 
         <div className="hidden items-center gap-3 md:flex">
           <a
-            href="#demo"
+            href="/auth"
             className="text-sm font-medium text-foreground transition-colors hover:text-primary"
           >
             Sign in
