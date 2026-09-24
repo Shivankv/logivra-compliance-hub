@@ -23,7 +23,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -398,6 +398,25 @@ export function FinalCta() {
   const [company, setCompany] = useState("");
   const [busy, setBusy] = useState(false);
   const [done, setDone] = useState(false);
+  const [flash, setFlash] = useState(false);
+
+  // Every "Book a demo" link smoothly scrolls here, highlights the form and focuses the email field.
+  useEffect(() => {
+    function onClick(e: MouseEvent) {
+      const link = (e.target as HTMLElement | null)?.closest('a[href="#demo"]');
+      if (!link) return;
+      e.preventDefault();
+      document.getElementById("demo")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      history.replaceState(null, "", "#demo");
+      setFlash(true);
+      window.setTimeout(() => {
+        (document.getElementById("work-email") as HTMLInputElement | null)?.focus({ preventScroll: true });
+      }, 600);
+      window.setTimeout(() => setFlash(false), 1600);
+    }
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, []);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -422,7 +441,12 @@ export function FinalCta() {
   }
 
   return (
-    <section id="demo" className="bg-primary-deep">
+    <section
+      id="demo"
+      className={`scroll-mt-16 bg-primary-deep transition-shadow duration-500 ${
+        flash ? "shadow-[inset_0_0_0_4px_var(--color-accent)]" : ""
+      }`}
+    >
       <div className="mx-auto max-w-4xl px-5 py-20 text-center sm:px-8">
         <h2 className="text-3xl font-semibold text-primary-foreground sm:text-4xl">
           See your own permit turned into a plan
