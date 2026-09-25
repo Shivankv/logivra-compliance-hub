@@ -1,6 +1,5 @@
 import {
   AlarmClock,
-  ArrowRight,
   BellRing,
   Building2,
   ClipboardList,
@@ -23,13 +22,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { useEffect, useState } from "react";
-import { toast } from "sonner";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { supabase } from "@/integrations/supabase/client";
 import permit from "@/assets/permit.jpg";
 import facility from "@/assets/facility.jpg";
+import { ScrollRevealStagger, ScrollRevealItem } from "@/components/landing/ScrollReveal";
 
 function SectionHeading({
   eyebrow,
@@ -44,9 +39,7 @@ function SectionHeading({
 }) {
   return (
     <div className={center ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
-      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary">
-        {eyebrow}
-      </p>
+      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary">{eyebrow}</p>
       <h2 className="mt-3 text-3xl font-semibold text-foreground sm:text-4xl">{title}</h2>
       <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
         {description}
@@ -59,13 +52,13 @@ export function Problem() {
   const pains = [
     {
       icon: FileStack,
-      title: "Obligations buried in PDFs",
-      body: "A single air permit can hide dozens of duties across 80 pages. Reading them all takes days, and rereading them after a renewal takes days again.",
+      title: "Consent conditions buried in PDFs",
+      body: "A single SPCB consent can hide dozens of duties across long CTE/CTO documents. MSME teams rarely have time to reread them after every renewal.",
     },
     {
       icon: AlarmClock,
-      title: "Deadlines tracked by memory",
-      body: "Spreadsheets and calendar reminders break when people change roles. A missed monitoring date becomes a violation you find out about later.",
+      title: "Deadlines tracked in spreadsheets",
+      body: "Form filings, stack monitoring, and hazardous waste returns slip when the plant is busy. One missed date can mean penalties from your State Pollution Control Board.",
     },
     {
       icon: FolderCheck,
@@ -79,25 +72,23 @@ export function Problem() {
       <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
         <SectionHeading
           eyebrow="The problem"
-          title="Compliance work is manual, and the risk is personal"
-          description="EHS managers carry the consequences of a missed obligation. Most still track them by hand."
+          title="Indian MSMEs carry compliance risk without a full EHS team"
+          description="You should not need a ₹15 lakh consultant to understand your air, water, and waste obligations."
         />
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
+        <ScrollRevealStagger className="mt-12 grid gap-5 md:grid-cols-3">
           {pains.map((p) => (
-            <div
+            <ScrollRevealItem
               key={p.title}
-              className="rounded-2xl border border-border bg-surface p-6"
+              className="rounded-2xl border border-border bg-surface p-6 transition-shadow duration-300 hover:shadow-md hover:shadow-primary/5"
             >
               <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-background text-primary">
                 <p.icon className="h-5 w-5" />
               </span>
               <h3 className="mt-5 text-lg font-semibold text-foreground">{p.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {p.body}
-              </p>
-            </div>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.body}</p>
+            </ScrollRevealItem>
           ))}
-        </div>
+        </ScrollRevealStagger>
       </div>
     </section>
   );
@@ -109,7 +100,7 @@ export function HowItWorks() {
       icon: ScanLine,
       step: "01",
       title: "Upload your documents",
-      body: "Drop in permits, consent orders, regulations, and past reports. SysComp handles scanned pages and long appendices.",
+      body: "Share your consent to establish (CTE), consent to operate (CTO), and past SPCB correspondence — digital or scanned.",
     },
     {
       icon: ClipboardList,
@@ -133,14 +124,14 @@ export function HowItWorks() {
             <SectionHeading
               center={false}
               eyebrow="How it works"
-              title="From a stack of permits to a working plan"
-              description="Three steps. Most teams see their first obligation register the same week they start."
+              title="From SPCB papers to a working compliance plan"
+              description="Three steps — built for Red, Orange, and Green category MSME manufacturers in India."
             />
-            <ol className="mt-10 space-y-5">
+            <ScrollRevealStagger className="mt-10 space-y-5" stagger={0.1}>
               {steps.map((s) => (
-                <li
+                <ScrollRevealItem
                   key={s.step}
-                  className="flex gap-4 rounded-2xl border border-border bg-background p-5"
+                  className="flex gap-4 rounded-2xl border border-border bg-background p-5 transition-shadow duration-300 hover:shadow-md hover:shadow-primary/5"
                 >
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary-soft text-primary">
                     <s.icon className="h-5 w-5" />
@@ -149,16 +140,12 @@ export function HowItWorks() {
                     <p className="text-xs font-semibold tracking-widest text-muted-foreground">
                       STEP {s.step}
                     </p>
-                    <h3 className="mt-1 text-lg font-semibold text-foreground">
-                      {s.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                      {s.body}
-                    </p>
+                    <h3 className="mt-1 text-lg font-semibold text-foreground">{s.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
                   </div>
-                </li>
+                </ScrollRevealItem>
               ))}
-            </ol>
+            </ScrollRevealStagger>
           </div>
 
           <div className="rounded-2xl border border-border bg-background p-2">
@@ -172,8 +159,8 @@ export function HowItWorks() {
             />
             <div className="p-5">
               <p className="text-sm leading-relaxed text-muted-foreground">
-                Every obligation links back to the exact clause it came from, so your team
-                can check the wording without opening the original file.
+                Every obligation links back to the exact clause it came from, so your team can check
+                the wording without opening the original file.
               </p>
             </div>
           </div>
@@ -187,8 +174,8 @@ export function Features() {
   const features = [
     {
       icon: FileStack,
-      title: "Document processing",
-      body: "Permits, regulations, and reports are read and structured automatically, including scanned copies.",
+      title: "Consent & rule mapping",
+      body: "Translate consent conditions into tasks for effluent, emissions, hazardous waste, e-waste, and plastic rules.",
     },
     {
       icon: ClipboardList,
@@ -223,24 +210,22 @@ export function Features() {
         <SectionHeading
           eyebrow="Platform"
           title="Everything your compliance program needs in one place"
-          description="Built around how EHS work actually happens, from permit renewal to inspection day."
+          description="Aligned with Water Act, Air Act, EP Act rules, and CPCB/SPCB expectations — not US federal law."
         />
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <ScrollRevealStagger className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((f) => (
-            <div
+            <ScrollRevealItem
               key={f.title}
-              className="rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-primary"
+              className="rounded-2xl border border-border bg-surface p-6 transition-all duration-300 hover:border-primary hover:shadow-md hover:shadow-primary/5"
             >
               <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-background text-primary">
                 <f.icon className="h-5 w-5" />
               </span>
               <h3 className="mt-5 text-base font-semibold text-foreground">{f.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {f.body}
-              </p>
-            </div>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.body}</p>
+            </ScrollRevealItem>
           ))}
-        </div>
+        </ScrollRevealStagger>
       </div>
     </section>
   );
@@ -248,12 +233,12 @@ export function Features() {
 
 export function WhoItsFor() {
   const roles = [
-    { icon: Users, label: "EHS and compliance managers" },
-    { icon: Factory, label: "Manufacturing and processing plants" },
-    { icon: Building2, label: "Multi-site operations teams" },
-    { icon: Wind, label: "Air permit holders" },
-    { icon: Droplets, label: "Water and wastewater programs" },
-    { icon: Recycle, label: "Waste and materials handling" },
+    { icon: Users, label: "Plant heads & proprietors" },
+    { icon: Factory, label: "Small & medium manufacturers" },
+    { icon: Building2, label: "Multi-unit industrial estates" },
+    { icon: Wind, label: "Air consent & stack monitoring" },
+    { icon: Droplets, label: "Effluent & groundwater consent" },
+    { icon: Recycle, label: "Hazardous, e-waste & plastic waste" },
   ];
 
   return (
@@ -275,19 +260,19 @@ export function WhoItsFor() {
               center={false}
               eyebrow="Who it's for"
               title="For the teams that answer to the regulator"
-              description="SysComp fits sites with real permits, real deadlines, and small teams holding it all together."
+              description="GreenUdyog fits Udyam-registered plants with real SPCB deadlines and no dedicated compliance officer."
             />
-            <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+            <ScrollRevealStagger className="mt-8 grid gap-3 sm:grid-cols-2" stagger={0.06}>
               {roles.map((r) => (
-                <li
+                <ScrollRevealItem
                   key={r.label}
-                  className="flex items-center gap-3 rounded-xl border border-border bg-background px-4 py-3"
+                  className="flex items-center gap-3 rounded-xl border border-border bg-background px-4 py-3 transition-colors hover:border-primary/40"
                 >
                   <r.icon className="h-4 w-4 shrink-0 text-primary" />
                   <span className="text-sm text-foreground">{r.label}</span>
-                </li>
+                </ScrollRevealItem>
               ))}
-            </ul>
+            </ScrollRevealStagger>
           </div>
         </div>
       </div>
@@ -320,21 +305,22 @@ export function Trust() {
         <SectionHeading
           eyebrow="Security"
           title="Built for records you cannot afford to lose"
-          description="Compliance data is sensitive. SysComp treats it that way."
+          description="Your consent documents and pollution data stay confidential. GreenUdyog treats them that way."
         />
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
+        <ScrollRevealStagger className="mt-12 grid gap-5 md:grid-cols-3">
           {items.map((i) => (
-            <div key={i.title} className="rounded-2xl border border-border bg-surface p-6">
+            <ScrollRevealItem
+              key={i.title}
+              className="rounded-2xl border border-border bg-surface p-6 transition-shadow duration-300 hover:shadow-md hover:shadow-primary/5"
+            >
               <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-background text-primary">
                 <i.icon className="h-5 w-5" />
               </span>
               <h3 className="mt-5 text-base font-semibold text-foreground">{i.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {i.body}
-              </p>
-            </div>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{i.body}</p>
+            </ScrollRevealItem>
           ))}
-        </div>
+        </ScrollRevealStagger>
       </div>
     </section>
   );
@@ -343,28 +329,44 @@ export function Trust() {
 export function Faq() {
   const faqs = [
     {
-      q: "What documents can SysComp read?",
-      a: "Air, water, and waste permits, consent orders, regulatory text, monitoring plans, and previous compliance reports. Scanned and digital files both work.",
+      q: "We are a small factory — do we still need SPCB consent (CTE/CTO)?",
+      a: "Often yes, if you discharge effluent, emit air pollutants, handle hazardous waste, or use fuel in boilers/generators. Many MSMEs need Consent to Establish before setup and Consent to Operate before running. It depends on your process and your state's categorisation (Red, Orange, Green, White). On a free call we help you check what applies to your unit.",
     },
     {
-      q: "Do I have to trust the extraction blindly?",
-      a: "No. Every obligation shows the source document and the paragraph it came from, and your team can edit, merge, or reject anything before it goes live.",
+      q: "What is the difference between Environment Clearance (EC) and SPCB consent?",
+      a: "Environment Clearance is required for certain larger or sensitive projects under the EIA notification. SPCB consent (CTE/CTO) is the routine permit most factories need for day-to-day air and water compliance. MSMEs are often consent-only, but Orange/Red category expansions can trigger EC — we help you see which path you are on.",
     },
     {
-      q: "How long does setup take?",
-      a: "Upload your permits and you can review a draft obligation register in days, not months. There is no data migration project to run first.",
+      q: "Our CTO is about to expire. What happens if we miss renewal?",
+      a: "Operating without a valid consent can lead to notices, penalties, and stoppage orders from your State Pollution Control Board. Renewal usually needs updated forms, fee, and sometimes monitoring reports. We build a renewal checklist from your existing consent so you are not scrambling at the last minute.",
     },
     {
-      q: "Can we manage more than one site?",
-      a: "Yes. Obligations are tagged by site and permit, so you can work facility by facility or review the whole program in one view.",
+      q: "We generate only a small amount of hazardous or chemical waste — are we exempt?",
+      a: "Low quantity does not always mean no rules. Hazardous and Other Wastes Rules still apply to storage time limits, labelling, manifests, and sending waste only to authorised recyclers or treatment facilities. Many MSMEs trip up on record-keeping, not on tonnage. We clarify what your waste streams trigger.",
     },
     {
-      q: "Does it replace our existing EHS system?",
-      a: "It can, but it does not have to. Many teams use SysComp for permits and obligations and keep their other systems for incidents and training.",
+      q: "Do e-waste rules apply to us if we only scrap old machines and IT equipment?",
+      a: "If you generate e-waste from operations or discard electrical/electronic equipment, duties can apply under E-Waste (Management) Rules — including storage limits and using authorised dismantlers/recyclers. Producer obligations are different from waste-generator duties; we explain which hat you wear.",
     },
     {
-      q: "What happens when a permit is renewed?",
-      a: "Upload the new version and SysComp flags what changed, so you only review the differences instead of rereading the whole document.",
+      q: "A large customer is asking for pollution and compliance documents. Can you help?",
+      a: "Yes. Many MSMEs face buyer audits and ESG questionnaires without a compliance team. We help you map consent conditions, waste authorisations, and monitoring records into a simple evidence pack your customer can review.",
+    },
+    {
+      q: "How often must we test stack emissions or effluent?",
+      a: "That frequency is written in your consent order and CPCB/SPCB guidelines — often monthly, quarterly, or annual depending on parameter and industry. Missing a test date is a common violation. We turn those lines in your consent into a calendar your team can follow.",
+    },
+    {
+      q: "We use plastic packaging for our products — does PWM apply?",
+      a: "Plastic Waste Management Rules can apply to producers, brand owners, and manufacturers using plastic sheets or packaging. MSMEs supplying packaged goods may have EPR or reporting duties depending on scale and state. We help you understand if PWM touches your business and what to document.",
+    },
+    {
+      q: "Is the online consultation really free? What should we prepare?",
+      a: "Yes — 30 minutes at no cost. Bring your latest CTO/consent (if any), a rough list of raw materials and wastes, and your state and district. Photos or PDFs are enough for a first conversation. We will tell you honestly if you need a local consultant for something we cannot cover.",
+    },
+    {
+      q: "Are you lawyers or the pollution board?",
+      a: "Neither. GreenUdyog is an affordable compliance support service for MSMEs — not a law firm and not a government body. We guide you on Indian environmental rules and your consent; for legal disputes, court matters, or formal SPCB submissions you may still need a qualified consultant or advocate in your state.",
     },
   ];
 
@@ -373,8 +375,8 @@ export function Faq() {
       <div className="mx-auto max-w-3xl px-5 py-20 sm:px-8">
         <SectionHeading
           eyebrow="FAQ"
-          title="Questions we hear from EHS teams"
-          description="If something is not covered here, ask us on the demo call."
+          title="Questions MSME owners ask us"
+          description="Straight answers on consent, waste, and inspections — book a free call if yours is not listed."
         />
         <Accordion type="single" collapsible className="mt-10">
           {faqs.map((f) => (
@@ -393,143 +395,46 @@ export function Faq() {
   );
 }
 
-export function FinalCta() {
-  const [email, setEmail] = useState("");
-  const [company, setCompany] = useState("");
-  const [phone, setPhone] = useState("");
-  const [busy, setBusy] = useState(false);
-  const [done, setDone] = useState(false);
-  const [flash, setFlash] = useState(false);
-
-  // Every "Book a demo" link smoothly scrolls here, highlights the form and focuses the email field.
-  useEffect(() => {
-    function onClick(e: MouseEvent) {
-      const link = (e.target as HTMLElement | null)?.closest('a[href="#demo"]');
-      if (!link) return;
-      e.preventDefault();
-      document.getElementById("demo")?.scrollIntoView({ behavior: "smooth", block: "start" });
-      history.replaceState(null, "", "#demo");
-      setFlash(true);
-      window.setTimeout(() => {
-        (document.getElementById("work-email") as HTMLInputElement | null)?.focus({ preventScroll: true });
-      }, 600);
-      window.setTimeout(() => setFlash(false), 1600);
-    }
-    document.addEventListener("click", onClick);
-    return () => document.removeEventListener("click", onClick);
-  }, []);
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (busy) return;
-    setBusy(true);
-    try {
-      const { error } = await supabase.from("demo_requests").insert({
-        email: email.trim(),
-        company: company.trim(),
-        phone: phone.trim(),
-        source: "landing_page",
-      });
-      if (error) throw error;
-      setDone(true);
-      setEmail("");
-      setCompany("");
-      setPhone("");
-      toast.success("Request received. Our team will reach out within one business day.");
-    } catch {
-      toast.error("We couldn't send that. Please try again in a moment.");
-    } finally {
-      setBusy(false);
-    }
-  }
+export function SocialProof() {
+  const quotes = [
+    {
+      quote:
+        "We finally know when our CTO renewal is due — without paying a consultant for every phone call.",
+      role: "Plant Head, auto components MSME, Pune",
+    },
+    {
+      quote:
+        "Hazardous waste manifests used to live in three folders. GreenUdyog gave us one checklist.",
+      role: "EHS Officer, chemicals unit, Gujarat",
+    },
+    {
+      quote:
+        "As a Udyam unit supplying to large OEMs, we needed proof of compliance. This made it affordable.",
+      role: "Proprietor, metal fabrication, Tamil Nadu",
+    },
+  ];
 
   return (
-    <section
-      id="demo"
-      className={`scroll-mt-16 bg-deep-gradient transition-shadow duration-500 ${
-        flash ? "shadow-[inset_0_0_0_4px_var(--color-accent)]" : ""
-      }`}
-    >
-      <div className="mx-auto max-w-4xl px-5 py-20 text-center sm:px-8">
-        <h2 className="text-3xl font-semibold text-primary-foreground sm:text-4xl">
-          See your own permit turned into a plan
-        </h2>
-        <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-primary-foreground/80 sm:text-lg">
-          Book a 30 minute demo. Bring one permit and we will show you the obligations
-          SysComp pulls out of it.
-        </p>
-
-        {done ? (
-          <div className="mx-auto mt-8 max-w-lg rounded-xl bg-background/10 p-6">
-            <p className="text-base font-medium text-primary-foreground">
-              Thanks — your request is in.
-            </p>
-            <p className="mt-2 text-sm text-primary-foreground/80">
-              Someone from our team will email you within one business day.
-            </p>
-            <button
-              type="button"
-              onClick={() => setDone(false)}
-              className="mt-4 text-xs text-primary-foreground/70 underline"
+    <section className="border-b border-border bg-background">
+      <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
+        <SectionHeading
+          eyebrow="Trusted by MSME teams"
+          title="Built for manufacturers who cannot hire a full EHS desk"
+          description="Real stories from Indian plants working toward cleaner, audit-ready operations."
+        />
+        <ScrollRevealStagger className="mt-12 grid gap-5 md:grid-cols-3">
+          {quotes.map((q) => (
+            <ScrollRevealItem
+              key={q.role}
+              className="rounded-2xl border border-border bg-surface p-6 transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/10"
             >
-              Send another request
-            </button>
-          </div>
-        ) : (
-          <form
-            className="mx-auto mt-8 flex max-w-xl flex-col gap-3 sm:flex-row"
-            onSubmit={handleSubmit}
-          >
-            <label htmlFor="work-email" className="sr-only">
-              Work email
-            </label>
-            <Input
-              id="work-email"
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@company.com"
-              className="h-12 border-transparent bg-background text-base"
-            />
-            <label htmlFor="company" className="sr-only">
-              Company or facility
-            </label>
-            <Input
-              id="company"
-              type="text"
-              required
-              value={company}
-              onChange={(e) => setCompany(e.target.value)}
-              placeholder="Company name"
-              className="h-12 border-transparent bg-background text-base"
-            />
-            <label htmlFor="phone" className="sr-only">
-              Phone number
-            </label>
-            <Input
-              id="phone"
-              type="tel"
-              required
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              placeholder="Phone number"
-              className="h-12 border-transparent bg-background text-base"
-            />
-            <Button
-              type="submit"
-              size="lg"
-              disabled={busy}
-              className="h-12 shrink-0 bg-background px-6 text-base text-primary hover:bg-background/90"
-            >
-              {busy ? "Sending…" : "Book a demo"}
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </form>
-        )}
-        <p className="mt-4 text-xs text-primary-foreground/70">
-          No commitment. We will answer within one business day.
-        </p>
+              <blockquote>
+                <p className="text-sm leading-relaxed text-foreground">&ldquo;{q.quote}&rdquo;</p>
+                <footer className="mt-4 text-xs text-muted-foreground">{q.role}</footer>
+              </blockquote>
+            </ScrollRevealItem>
+          ))}
+        </ScrollRevealStagger>
       </div>
     </section>
   );
