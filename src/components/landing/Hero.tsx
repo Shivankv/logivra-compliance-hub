@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button";
 import dashboard from "@/assets/dashboard.jpg";
 
 const proof = [
-  { icon: FileSearch, text: "CTE, CTO & SPCB obligations mapped" },
-  { icon: CalendarCheck, text: "Free expert call for MSME teams" },
-  { icon: ShieldCheck, text: "Audit-ready evidence, Indian law only" },
+  { icon: FileSearch, text: "Stack limits & emission clauses mapped" },
+  { icon: CalendarCheck, text: "Free call on carbon & air scrutiny" },
+  { icon: ShieldCheck, text: "Proof ready for SPCB / CPCB checks" },
 ];
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -28,14 +28,15 @@ export function Hero() {
             transition={{ duration: 0.75, ease }}
           >
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary-soft px-3 py-1 text-xs font-medium text-primary-deep">
-              GreenUdyog — Compliance for small manufacturers
+              GreenUdyog — Emissions clarity for small manufacturers
             </span>
             <h1 className="mt-5 text-4xl font-semibold leading-[1.08] text-foreground sm:text-5xl lg:text-6xl">
-              Affordable EHS guidance for Indian MSMEs.
+              Stay ahead of carbon and air-pollution scrutiny.
             </h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              Turn SPCB consents, air and water rules, and waste regulations into a clear plan —
-              without hiring a full-time consultant. Book a free online call to get started.
+              Indian MSMEs face tighter watch on stack emissions, fuel use, and pollutants like PM,
+              SO₂, NOx, and VOCs — plus growing pressure on carbon and energy data. Turn your CTO
+              and monitoring duties into a clear plan without a full-time consultant.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -74,7 +75,7 @@ export function Hero() {
           >
             <img
               src={dashboard}
-              alt="GreenUdyog dashboard showing Indian compliance tasks and deadlines"
+              alt="GreenUdyog dashboard showing emission limits, monitoring dates, and compliance tasks"
               width={1600}
               height={1104}
               className="w-full rounded-xl border border-border"

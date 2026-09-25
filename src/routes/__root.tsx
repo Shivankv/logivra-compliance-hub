@@ -78,17 +78,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "GreenUdyog — Compliance for small manufacturers" },
+      { title: "GreenUdyog — Emissions clarity for small manufacturers" },
       {
         name: "description",
         content:
-          "Affordable EHS support for Indian MSMEs. Book a free online consultation for SPCB, air, water, and waste compliance.",
+          "Carbon and air-pollution support for Indian MSMEs. Stack limits, monitoring, and SPCB/CPCB obligations — book a free consultation.",
       },
       { name: "author", content: "GreenUdyog" },
       { property: "og:title", content: "GreenUdyog" },
       {
         property: "og:description",
-        content: "Compliance for small manufacturers — Indian environmental law, made practical.",
+        content:
+          "Emissions clarity for small manufacturers — carbon, stack air pollutants, and regulator-ready records.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

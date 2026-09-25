@@ -11,12 +11,12 @@ const groups = [
     ],
   },
   {
-    title: "Compliance",
+    title: "Emissions focus",
     links: [
-      { label: "CTE / CTO", href: "#who" },
-      { label: "Air & water consent", href: "#who" },
-      { label: "Hazardous & e-waste", href: "#who" },
-      { label: "SPCB readiness", href: "#who" },
+      { label: "Stack & air consent", href: "#who" },
+      { label: "Carbon & fuel records", href: "#who" },
+      { label: "Monitoring & testing", href: "#features" },
+      { label: "Regulator readiness", href: "#trust" },
     ],
   },
   {
@@ -33,8 +33,8 @@ export function Footer() {
           <div>
             <GreenUdyogLogo className="h-10 w-10" showWordmark />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Affordable online EHS support for Indian MSMEs — air, water, waste, and consent
-              obligations under Indian law.
+              Affordable online support for Indian MSMEs on carbon, stack emissions, and related air
+              pollutants — so government scrutiny does not catch you unprepared.
             </p>
           </div>
 

@@ -184,7 +184,7 @@ function AdminPage() {
       </header>
 
       <main className="mx-auto max-w-6xl px-5 py-10 sm:px-8">
-        <p className="text-sm text-muted-foreground">Compliance for small manufacturers</p>
+        <p className="text-sm text-muted-foreground">Emissions clarity for small manufacturers</p>
         <h1 className="mt-1 text-2xl font-semibold sm:text-3xl">Dashboard</h1>
 
         <Tabs defaultValue="analytics" className="mt-8">

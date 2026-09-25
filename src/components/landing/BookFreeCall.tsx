@@ -15,12 +15,12 @@ import {
 } from "@/lib/api";
 
 const INTERESTS = [
-  "Air emissions (CPCB/SPCB)",
-  "Effluent & water consent",
-  "Hazardous waste",
-  "E-waste",
-  "Plastic waste",
-  "CTE / CTO renewals",
+  "Stack emissions & consent limits (PM, SO₂, NOx)",
+  "Carbon / fuel use & energy records",
+  "Boiler, furnace & DG set compliance",
+  "Stack monitoring & lab reports",
+  "SPCB notice or exceedance follow-up",
+  "Buyer carbon / ESG questionnaires",
 ];
 
 function formatSlotIST(iso: string) {
@@ -161,8 +161,9 @@ export function BookFreeCall() {
             Book a free online consultation
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-primary-foreground/85 sm:text-lg">
-            30 minutes with our team — CTE/CTO, air & water consent, hazardous and e-waste
-            obligations for Indian MSMEs. No consultant fees for this call.
+            30 minutes with our team — carbon footprint basics, stack air pollutants, monitoring
+            schedules, and what triggers SPCB or CPCB scrutiny for Indian MSMEs. No consultant fees
+            for this call.
           </p>
         </div>
 

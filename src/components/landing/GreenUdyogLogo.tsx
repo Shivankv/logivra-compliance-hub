@@ -105,7 +105,7 @@ export function GreenUdyogLogo({
           GreenUdyog
         </span>
         <span className="block text-[10px] font-medium text-muted-foreground sm:text-[11px]">
-          Compliance for small manufacturers
+          Emissions clarity for small manufacturers
         </span>
       </span>
     </span>

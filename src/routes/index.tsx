@@ -14,9 +14,9 @@ import { BookFreeCall } from "@/components/landing/BookFreeCall";
 import { Footer } from "@/components/landing/Footer";
 import { ScrollReveal } from "@/components/landing/ScrollReveal";
 
-const title = "GreenUdyog — Compliance for small manufacturers";
+const title = "GreenUdyog — Emissions clarity for small manufacturers";
 const description =
-  "Affordable online EHS support for Indian MSMEs: SPCB consent, air and water, hazardous and e-waste rules — book a free consultation.";
+  "Help Indian MSMEs track carbon and air pollution — stack limits, PM and GHG-related duties, and SPCB/CPCB scrutiny — book a free consultation.";
 
 export const Route = createFileRoute("/")({
   head: () => ({

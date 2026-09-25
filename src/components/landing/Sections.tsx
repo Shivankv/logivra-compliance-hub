@@ -8,12 +8,11 @@ import {
   FolderCheck,
   Gauge,
   Lock,
-  Recycle,
+  Flame,
   ScanLine,
   ServerCog,
   Share2,
   Users,
-  Droplets,
   Wind,
 } from "lucide-react";
 import {
@@ -52,18 +51,18 @@ export function Problem() {
   const pains = [
     {
       icon: FileStack,
-      title: "Consent conditions buried in PDFs",
-      body: "A single SPCB consent can hide dozens of duties across long CTE/CTO documents. MSME teams rarely have time to reread them after every renewal.",
+      title: "Emission limits buried in consent PDFs",
+      body: "Your CTO may list mg/Nm³ caps for PM, SO₂, NOx, or other parameters across dozens of pages. MSME teams often discover a limit only after a test fails or a notice arrives.",
     },
     {
       icon: AlarmClock,
-      title: "Deadlines tracked in spreadsheets",
-      body: "Form filings, stack monitoring, and hazardous waste returns slip when the plant is busy. One missed date can mean penalties from your State Pollution Control Board.",
+      title: "Monitoring dates slip on busy shop floors",
+      body: "Stack testing, continuous monitoring, and fuel or production logs are easy to defer. Missed cycles are a common reason SPCB and CPCB teams escalate scrutiny.",
     },
     {
       icon: FolderCheck,
-      title: "Evidence scattered everywhere",
-      body: "When an inspector asks for proof, the records sit in email threads, shared drives, and someone's desk. Assembling them is its own project.",
+      title: "No single picture of carbon and air risk",
+      body: "Fuel bills, DG run-hours, lab reports, and buyer ESG forms live in different places. When government or a large customer asks, assembling proof becomes a fire drill.",
     },
   ];
 
@@ -72,8 +71,8 @@ export function Problem() {
       <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
         <SectionHeading
           eyebrow="The problem"
-          title="Indian MSMEs carry compliance risk without a full EHS team"
-          description="You should not need a ₹15 lakh consultant to understand your air, water, and waste obligations."
+          title="Small plants face big scrutiny on what they emit"
+          description="Carbon and air pollution are on every regulator’s radar. You should not need a ₹15 lakh consultant to know what could bring enforcement to your gate."
         />
         <ScrollRevealStagger className="mt-12 grid gap-5 md:grid-cols-3">
           {pains.map((p) => (
@@ -99,20 +98,20 @@ export function HowItWorks() {
     {
       icon: ScanLine,
       step: "01",
-      title: "Upload your documents",
-      body: "Share your consent to establish (CTE), consent to operate (CTO), and past SPCB correspondence — digital or scanned.",
+      title: "Upload air & energy documents",
+      body: "Share your CTO, stack monitoring reports, fuel and electricity records, and any SPCB or CPCB notices — digital or scanned.",
     },
     {
       icon: ClipboardList,
       step: "02",
-      title: "Get a clear obligation list",
-      body: "Each requirement becomes a tracked obligation with the source paragraph attached, plus frequency, due date, and suggested owner.",
+      title: "Map limits, tests, and carbon drivers",
+      body: "Each emission clause, monitoring frequency, and key fuel or process source becomes a tracked obligation with the source text attached.",
     },
     {
       icon: BellRing,
       step: "03",
-      title: "Stay ahead of every date",
-      body: "Your team gets reminders before work is due, records proof as it happens, and exports an audit-ready file whenever it is asked for.",
+      title: "Act before scrutiny turns into penalties",
+      body: "Reminders before tests and filings, a place to log readings and fuel data, and exportable packs when inspectors or buyers ask.",
     },
   ];
 
@@ -124,8 +123,8 @@ export function HowItWorks() {
             <SectionHeading
               center={false}
               eyebrow="How it works"
-              title="From SPCB papers to a working compliance plan"
-              description="Three steps — built for Red, Orange, and Green category MSME manufacturers in India."
+              title="From stack consent to emissions you can defend"
+              description="Three steps — for MSMEs with boilers, furnaces, DG sets, or processes that put them on an SPCB air consent."
             />
             <ScrollRevealStagger className="mt-10 space-y-5" stagger={0.1}>
               {steps.map((s) => (
@@ -151,7 +150,7 @@ export function HowItWorks() {
           <div className="rounded-2xl border border-border bg-background p-2">
             <img
               src={permit}
-              alt="An environmental air permit next to a laptop showing extracted compliance tasks"
+              alt="Air consent documents next to a laptop showing emission limits and monitoring tasks"
               loading="lazy"
               width={1408}
               height={1008}
@@ -173,34 +172,34 @@ export function HowItWorks() {
 export function Features() {
   const features = [
     {
-      icon: FileStack,
-      title: "Consent & rule mapping",
-      body: "Translate consent conditions into tasks for effluent, emissions, hazardous waste, e-waste, and plastic rules.",
+      icon: Wind,
+      title: "Stack & air consent mapping",
+      body: "Turn CTO clauses into tasks for emission limits, control equipment, and parameters your board cares about.",
     },
     {
-      icon: ClipboardList,
-      title: "Obligation register",
-      body: "One live list of what is required, where it applies, how often, and who is responsible.",
+      icon: Flame,
+      title: "Carbon & fuel visibility",
+      body: "Track fuels, DG hours, and energy use alongside air duties so carbon questions do not surprise you later.",
     },
     {
       icon: BellRing,
-      title: "Deadline reminders",
-      body: "Notifications ahead of monitoring, sampling, reporting, and renewal dates.",
+      title: "Monitoring calendar",
+      body: "Alerts before stack tests, CEMS checks, and periodic reports tied to your consent.",
     },
     {
       icon: FolderCheck,
-      title: "Evidence trail",
-      body: "Attach records, readings, and sign-offs to each task as the work is completed.",
+      title: "Lab & reading archive",
+      body: "Attach stack reports, calibration records, and exceedance follow-ups to the obligation they satisfy.",
     },
     {
       icon: Gauge,
-      title: "Site and program views",
-      body: "See status for one facility or the whole portfolio without rebuilding a spreadsheet.",
+      title: "Plant & multi-site view",
+      body: "See which stacks or units are green, due soon, or at risk — without rebuilding spreadsheets.",
     },
     {
       icon: Share2,
-      title: "Reports and exports",
-      body: "Produce inspection packs and management summaries in a few clicks.",
+      title: "Inspection & buyer packs",
+      body: "Export evidence for SPCB visits, NCAP-related asks, or customer carbon and ESG questionnaires.",
     },
   ];
 
@@ -209,8 +208,8 @@ export function Features() {
       <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
         <SectionHeading
           eyebrow="Platform"
-          title="Everything your compliance program needs in one place"
-          description="Aligned with Water Act, Air Act, EP Act rules, and CPCB/SPCB expectations — not US federal law."
+          title="Built around what regulators measure in the air"
+          description="Grounded in India’s Air Act, CPCB emission standards, and SPCB consent practice — focused on carbon drivers and air pollutants, not US federal law."
         />
         <ScrollRevealStagger className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((f) => (
@@ -233,12 +232,12 @@ export function Features() {
 
 export function WhoItsFor() {
   const roles = [
-    { icon: Users, label: "Plant heads & proprietors" },
-    { icon: Factory, label: "Small & medium manufacturers" },
-    { icon: Building2, label: "Multi-unit industrial estates" },
-    { icon: Wind, label: "Air consent & stack monitoring" },
-    { icon: Droplets, label: "Effluent & groundwater consent" },
-    { icon: Recycle, label: "Hazardous, e-waste & plastic waste" },
+    { icon: Users, label: "Plant heads answering to the board" },
+    { icon: Factory, label: "Foundries, metals & auto components" },
+    { icon: Building2, label: "Units in notified industrial areas" },
+    { icon: Wind, label: "Stacks with PM, SO₂, NOx limits" },
+    { icon: Flame, label: "Boilers, furnaces & DG sets" },
+    { icon: Gauge, label: "Teams asked for carbon / ESG data" },
   ];
 
   return (
@@ -259,8 +258,8 @@ export function WhoItsFor() {
             <SectionHeading
               center={false}
               eyebrow="Who it's for"
-              title="For the teams that answer to the regulator"
-              description="GreenUdyog fits Udyam-registered plants with real SPCB deadlines and no dedicated compliance officer."
+              title="For plants where emissions draw government attention"
+              description="GreenUdyog fits Udyam MSMEs with air consent, periodic stack testing, and rising pressure on carbon and pollution — without a full EHS desk."
             />
             <ScrollRevealStagger className="mt-8 grid gap-3 sm:grid-cols-2" stagger={0.06}>
               {roles.map((r) => (
@@ -305,7 +304,7 @@ export function Trust() {
         <SectionHeading
           eyebrow="Security"
           title="Built for records you cannot afford to lose"
-          description="Your consent documents and pollution data stay confidential. GreenUdyog treats them that way."
+          description="Stack reports, fuel data, and consent files stay confidential. GreenUdyog treats them that way."
         />
         <ScrollRevealStagger className="mt-12 grid gap-5 md:grid-cols-3">
           {items.map((i) => (
@@ -329,44 +328,44 @@ export function Trust() {
 export function Faq() {
   const faqs = [
     {
-      q: "We are a small factory — do we still need SPCB consent (CTE/CTO)?",
-      a: "Often yes, if you discharge effluent, emit air pollutants, handle hazardous waste, or use fuel in boilers/generators. Many MSMEs need Consent to Establish before setup and Consent to Operate before running. It depends on your process and your state's categorisation (Red, Orange, Green, White). On a free call we help you check what applies to your unit.",
+      q: "We are a small unit — can the government still scrutinise our emissions?",
+      a: "Yes. If you have an air consent (CTE/CTO), use boilers, furnaces, or DG sets, or fall in a polluted industrial cluster, SPCB and CPCB can ask for stack data, monitoring reports, and proof you are within limits. Size does not remove scrutiny — weak records do increase it. On a free call we help you see your exposure.",
     },
     {
-      q: "What is the difference between Environment Clearance (EC) and SPCB consent?",
-      a: "Environment Clearance is required for certain larger or sensitive projects under the EIA notification. SPCB consent (CTE/CTO) is the routine permit most factories need for day-to-day air and water compliance. MSMEs are often consent-only, but Orange/Red category expansions can trigger EC — we help you see which path you are on.",
+      q: "What air pollutants usually trigger action in India?",
+      a: "Common focus areas are particulate matter (PM), sulphur dioxide (SO₂), nitrogen oxides (NOx), and sometimes VOCs or industry-specific parameters — all often capped in your consent in mg/Nm³. Exceedances, missing tests, or visible fugitive dust can lead to notices, directions, or closure threats depending on your state board.",
     },
     {
-      q: "Our CTO is about to expire. What happens if we miss renewal?",
-      a: "Operating without a valid consent can lead to notices, penalties, and stoppage orders from your State Pollution Control Board. Renewal usually needs updated forms, fee, and sometimes monitoring reports. We build a renewal checklist from your existing consent so you are not scrambling at the last minute.",
+      q: "Do MSMEs need to worry about carbon emissions?",
+      a: "Routine SPCB consent is still about permitted air pollutants, but carbon shows up through fuel use, electricity, and buyer supply-chain questionnaires. Large OEMs and export customers increasingly ask MSME suppliers for energy and emissions information even when full carbon accounting is not yet mandatory for you.",
     },
     {
-      q: "We generate only a small amount of hazardous or chemical waste — are we exempt?",
-      a: "Low quantity does not always mean no rules. Hazardous and Other Wastes Rules still apply to storage time limits, labelling, manifests, and sending waste only to authorised recyclers or treatment facilities. Many MSMEs trip up on record-keeping, not on tonnage. We clarify what your waste streams trigger.",
+      q: "What happens if we exceed a stack limit on a lab report?",
+      a: "You may need to inform the board, explain the cause, show corrective action, and re-test. Repeat or serious exceedances raise enforcement risk. We help you tie each limit in your CTO to a monitoring plan and a paper trail if something goes wrong.",
     },
     {
-      q: "Do e-waste rules apply to us if we only scrap old machines and IT equipment?",
-      a: "If you generate e-waste from operations or discard electrical/electronic equipment, duties can apply under E-Waste (Management) Rules — including storage limits and using authorised dismantlers/recyclers. Producer obligations are different from waste-generator duties; we explain which hat you wear.",
+      q: "How often must we test stack emissions?",
+      a: "Frequency is in your consent and CPCB/SPCB sector guidelines — monthly, quarterly, six-monthly, or annual depending on industry and parameter. Missing a cycle is one of the most common findings in inspections. We convert those lines into a calendar your team can run.",
     },
     {
-      q: "A large customer is asking for pollution and compliance documents. Can you help?",
-      a: "Yes. Many MSMEs face buyer audits and ESG questionnaires without a compliance team. We help you map consent conditions, waste authorisations, and monitoring records into a simple evidence pack your customer can review.",
+      q: "Our DG set runs only during power cuts — does it still count?",
+      a: "Often yes for consent and fuel records if it is listed as a source or uses diesel above thresholds your state cares about. Boards may ask for stack or noise data and fuel logs. We clarify what your consent and local rules expect for backup generators.",
     },
     {
-      q: "How often must we test stack emissions or effluent?",
-      a: "That frequency is written in your consent order and CPCB/SPCB guidelines — often monthly, quarterly, or annual depending on parameter and industry. Missing a test date is a common violation. We turn those lines in your consent into a calendar your team can follow.",
+      q: "What is NCAP and does it affect our factory?",
+      a: "The National Clean Air Programme pushes states to improve air quality in non-attainment and nearby industrial areas. That can mean tighter local action, more monitoring, and attention to MSME stacks in hotspot cities. If you operate in or supply plants in those regions, scrutiny can intensify even without a change in your CTO.",
     },
     {
-      q: "We use plastic packaging for our products — does PWM apply?",
-      a: "Plastic Waste Management Rules can apply to producers, brand owners, and manufacturers using plastic sheets or packaging. MSMEs supplying packaged goods may have EPR or reporting duties depending on scale and state. We help you understand if PWM touches your business and what to document.",
+      q: "A buyer sent a carbon or ESG form — can you help?",
+      a: "Yes. Many MSMEs must report fuel, electricity, and basic emissions-related data to customers without a sustainability team. We help you map consent limits, monitoring results, and energy records into answers you can stand behind.",
     },
     {
-      q: "Is the online consultation really free? What should we prepare?",
-      a: "Yes — 30 minutes at no cost. Bring your latest CTO/consent (if any), a rough list of raw materials and wastes, and your state and district. Photos or PDFs are enough for a first conversation. We will tell you honestly if you need a local consultant for something we cannot cover.",
+      q: "Is the online consultation free? What should we bring?",
+      a: "Yes — 30 minutes at no cost. Bring your latest air CTO (if any), recent stack or ambient reports, rough fuel and DG usage, and your state and district. PDFs or photos are enough for a first conversation.",
     },
     {
-      q: "Are you lawyers or the pollution board?",
-      a: "Neither. GreenUdyog is an affordable compliance support service for MSMEs — not a law firm and not a government body. We guide you on Indian environmental rules and your consent; for legal disputes, court matters, or formal SPCB submissions you may still need a qualified consultant or advocate in your state.",
+      q: "Are you the pollution board or a law firm?",
+      a: "Neither. GreenUdyog is affordable emissions and compliance support for MSMEs — not SPCB/CPCB and not legal counsel. For court cases, contested shutdown orders, or formal submissions you may still need a qualified consultant or advocate in your state.",
     },
   ];
 
@@ -375,8 +374,8 @@ export function Faq() {
       <div className="mx-auto max-w-3xl px-5 py-20 sm:px-8">
         <SectionHeading
           eyebrow="FAQ"
-          title="Questions MSME owners ask us"
-          description="Straight answers on consent, waste, and inspections — book a free call if yours is not listed."
+          title="Questions MSME owners ask about emissions"
+          description="Straight answers on stack limits, carbon pressure, and government scrutiny — book a free call if yours is not listed."
         />
         <Accordion type="single" collapsible className="mt-10">
           {faqs.map((f) => (
@@ -399,18 +398,18 @@ export function SocialProof() {
   const quotes = [
     {
       quote:
-        "We finally know when our CTO renewal is due — without paying a consultant for every phone call.",
-      role: "Plant Head, auto components MSME, Pune",
+        "After a stack exceedance notice, we finally had one place for limits, lab reports, and follow-up tasks.",
+      role: "Plant Head, foundry MSME, Maharashtra",
     },
     {
       quote:
-        "Hazardous waste manifests used to live in three folders. GreenUdyog gave us one checklist.",
-      role: "EHS Officer, chemicals unit, Gujarat",
+        "Our OEM asked for energy and emissions data we had never tracked. GreenUdyog helped us start without a big consultancy.",
+      role: "Operations lead, auto components, Chennai",
     },
     {
       quote:
-        "As a Udyam unit supplying to large OEMs, we needed proof of compliance. This made it affordable.",
-      role: "Proprietor, metal fabrication, Tamil Nadu",
+        "Stack monitoring dates used to live in someone's diary. Now the whole team sees what SPCB expects.",
+      role: "Proprietor, metal fabrication, Gujarat",
     },
   ];
 
@@ -419,8 +418,8 @@ export function SocialProof() {
       <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
         <SectionHeading
           eyebrow="Trusted by MSME teams"
-          title="Built for manufacturers who cannot hire a full EHS desk"
-          description="Real stories from Indian plants working toward cleaner, audit-ready operations."
+          title="Built for plants under the emissions microscope"
+          description="Stories from Indian MSMEs getting ahead of air-pollution and carbon questions."
         />
         <ScrollRevealStagger className="mt-12 grid gap-5 md:grid-cols-3">
           {quotes.map((q) => (
