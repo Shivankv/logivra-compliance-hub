@@ -11,6 +11,7 @@ import {
   WhoItsFor,
 } from "@/components/landing/Sections";
 import { Footer } from "@/components/landing/Footer";
+import { ScrollReveal } from "@/components/landing/ScrollReveal";
 
 const title = "SysComp — Automated environmental and EHS compliance";
 const description =
@@ -38,13 +39,13 @@ function Index() {
       <Nav />
       <main>
         <Hero />
-        <Problem />
-        <HowItWorks />
-        <Features />
-        <WhoItsFor />
-        <Trust />
-        <Faq />
-        <FinalCta />
+        <ScrollReveal><Problem /></ScrollReveal>
+        <ScrollReveal><HowItWorks /></ScrollReveal>
+        <ScrollReveal><Features /></ScrollReveal>
+        <ScrollReveal><WhoItsFor /></ScrollReveal>
+        <ScrollReveal><Trust /></ScrollReveal>
+        <ScrollReveal><Faq /></ScrollReveal>
+        <ScrollReveal><FinalCta /></ScrollReveal>
       </main>
       <Footer />
     </div>
