@@ -37,6 +37,7 @@ type DemoRequest = {
   email: string;
   full_name: string | null;
   company: string | null;
+  phone: string | null;
   message: string | null;
   source: string;
   status: string;
@@ -52,7 +53,7 @@ function DemoRequestsPage() {
     queryFn: async (): Promise<DemoRequest[]> => {
       const { data, error } = await supabase
         .from("demo_requests")
-        .select("id, email, full_name, company, message, source, status, created_at")
+        .select("id, email, full_name, company, phone, message, source, status, created_at")
         .order("created_at", { ascending: false });
       if (error) throw error;
       return (data ?? []) as DemoRequest[];
@@ -145,6 +146,7 @@ function DemoRequestsPage() {
                   <th className="px-4 py-3 font-semibold">Email</th>
                   <th className="hidden px-4 py-3 font-semibold sm:table-cell">Name</th>
                   <th className="hidden px-4 py-3 font-semibold md:table-cell">Company</th>
+                  <th className="hidden px-4 py-3 font-semibold lg:table-cell">Phone</th>
                   <th className="px-4 py-3 font-semibold">Status</th>
                   <th className="px-4 py-3" />
                 </tr>
@@ -172,6 +174,15 @@ function DemoRequestsPage() {
                     </td>
                     <td className="hidden px-4 py-3 text-muted-foreground md:table-cell">
                       {r.company || "—"}
+                    </td>
+                    <td className="hidden px-4 py-3 text-muted-foreground lg:table-cell">
+                      {r.phone ? (
+                        <a href={`tel:${r.phone}`} className="hover:text-primary">
+                          {r.phone}
+                        </a>
+                      ) : (
+                        "—"
+                      )}
                     </td>
                     <td className="px-4 py-3">
                       <Badge variant={r.status === "contacted" ? "secondary" : "default"}>

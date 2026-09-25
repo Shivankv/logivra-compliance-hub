@@ -396,6 +396,7 @@ export function Faq() {
 export function FinalCta() {
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
+  const [phone, setPhone] = useState("");
   const [busy, setBusy] = useState(false);
   const [done, setDone] = useState(false);
   const [flash, setFlash] = useState(false);
@@ -425,13 +426,15 @@ export function FinalCta() {
     try {
       const { error } = await supabase.from("demo_requests").insert({
         email: email.trim(),
-        company: company.trim() || null,
+        company: company.trim(),
+        phone: phone.trim(),
         source: "landing_page",
       });
       if (error) throw error;
       setDone(true);
       setEmail("");
       setCompany("");
+      setPhone("");
       toast.success("Request received. Our team will reach out within one business day.");
     } catch {
       toast.error("We couldn't send that. Please try again in a moment.");
@@ -495,9 +498,22 @@ export function FinalCta() {
             <Input
               id="company"
               type="text"
+              required
               value={company}
               onChange={(e) => setCompany(e.target.value)}
-              placeholder="Company or facility"
+              placeholder="Company name"
+              className="h-12 border-transparent bg-background text-base"
+            />
+            <label htmlFor="phone" className="sr-only">
+              Phone number
+            </label>
+            <Input
+              id="phone"
+              type="tel"
+              required
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              placeholder="Phone number"
               className="h-12 border-transparent bg-background text-base"
             />
             <Button
