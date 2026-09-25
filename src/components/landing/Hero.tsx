@@ -10,7 +10,7 @@ const proof = [
 
 export function Hero() {
   return (
-    <section id="top" className="border-b border-border bg-surface">
+    <section id="top" className="border-b border-border bg-surface-gradient">
       <div className="mx-auto max-w-7xl px-5 pb-16 pt-14 sm:px-8 sm:pb-20 sm:pt-20">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div>

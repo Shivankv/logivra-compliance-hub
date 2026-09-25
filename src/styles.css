@@ -159,6 +159,10 @@
   --input: oklch(0.905 0.008 160);
   --ring: oklch(0.42 0.082 162);
   --surface: oklch(0.985 0.006 160);
+  --brand-gradient: linear-gradient(135deg, oklch(0.46 0.105 158), oklch(0.34 0.085 171));
+  --brand-gradient-hover: linear-gradient(135deg, oklch(0.42 0.105 158), oklch(0.3 0.085 171));
+  --surface-gradient: linear-gradient(145deg, oklch(0.985 0.012 155), oklch(0.955 0.035 170));
+  --deep-gradient: linear-gradient(135deg, oklch(0.27 0.065 163), oklch(0.38 0.09 174));
   --radius: 0.75rem;
 }
 
@@ -189,6 +193,22 @@
 @utility scroll-reveal-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+@utility bg-brand-gradient {
+  background-image: var(--brand-gradient);
+}
+
+@utility bg-brand-gradient-hover {
+  background-image: var(--brand-gradient-hover);
+}
+
+@utility bg-surface-gradient {
+  background-image: var(--surface-gradient);
+}
+
+@utility bg-deep-gradient {
+  background-image: var(--deep-gradient);
 }
 
 @media (prefers-reduced-motion: reduce) {

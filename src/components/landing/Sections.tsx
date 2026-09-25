@@ -443,7 +443,7 @@ export function FinalCta() {
   return (
     <section
       id="demo"
-      className={`scroll-mt-16 bg-primary-deep transition-shadow duration-500 ${
+      className={`scroll-mt-16 bg-deep-gradient transition-shadow duration-500 ${
         flash ? "shadow-[inset_0_0_0_4px_var(--color-accent)]" : ""
       }`}
     >
